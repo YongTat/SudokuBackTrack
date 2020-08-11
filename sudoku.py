@@ -1,4 +1,4 @@
-grid = [
+GRID = [
     [0,7,0,0,0,0,4,0,5],
     [0,0,0,0,0,1,0,0,6],
     [2,0,0,0,7,0,0,0,0],
@@ -11,10 +11,14 @@ grid = [
 ]
 
 def solver(grid):
+    """[Sovle sudoku with given grid]
+
+    Args:
+        grid ([2D Array]): 2D Matrix to represent sudoku grid
+
+    Returns:
+        [Boolean]: [Boolean for recursion]
     """
-    Solves the sudoku given in the grid
-    """
-    # showGrid(grid)
     nextpos = findEmpty(grid)
     if nextpos == False:
         return True
@@ -33,8 +37,14 @@ def solver(grid):
     return False
 
 def findEmpty(grid):
-    """
-    find next 0 in the grid
+    """[Find next 0 in grid]
+
+    Args:
+        grid ([2D Array]): 2D Matrix to represent sudoku grid
+
+    Returns:
+        (Y,X): positon of next 0 in grid
+        False: if no 0 found
     """
     for i in range(9):
         for j in range(9):
@@ -44,8 +54,15 @@ def findEmpty(grid):
     return False
 
 def checkdigit(grid, num, pos):
-    """
-    check for error in grid
+    """[summary]
+
+    Args:
+        grid ([2D Array]): 2D Matrix to represent sudoku grid
+        num ([int]): Number to be inserted into the grid
+        pos ([(Y,X)]): position to insert given number
+
+    Returns:
+        [Boolean]: [False if dupe found else True]
     """
     #check row
     for i in range(9):
@@ -69,10 +86,11 @@ def checkdigit(grid, num, pos):
     return True
 
 def showGrid(grid):
-    """
-    print sudoku grid nicely
-    """
+    """[Prints sudoku onto console in a pretty way]
 
+    Args:
+        grid ([2D Array]): 2D Matrix to represent sudoku grid
+    """
     for i in range(len(grid)): #i is Y axis
         if i % 3 == 0 and i != 0:
             print("~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -88,6 +106,6 @@ def showGrid(grid):
 
     print("")
 
-showGrid(grid)
-solver(grid)
-showGrid(grid)
+showGrid(GRID)
+solver(GRID)
+showGrid(GRID)
